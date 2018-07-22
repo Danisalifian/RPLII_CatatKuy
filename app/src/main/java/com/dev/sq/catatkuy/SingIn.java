@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.dev.sq.catatkuy.Common.Common;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.signin.SignIn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class SingIn extends AppCompatActivity {
     private TextView tName,tEmail;
-    private Button btnLogout,btnMain,btnLogin;
+    private SignInButton btnLogin;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -29,6 +30,7 @@ public class SingIn extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
                         .append(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()),Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SingIn.this,Main.class));
             }
         }
     }
@@ -43,33 +45,22 @@ public class SingIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        btnLogout = (Button) findViewById(R.id.btnLogout);
-        btnMain = (Button) findViewById(R.id.btnMain);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin = (SignInButton) findViewById(R.id.btnLogin);
 
         //Check if not sign in then navigatae to sign in page
-        if (FirebaseAuth.getInstance().getCurrentUser() == null){
-            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
-                    .setAvailableProviders(providers).build(), Common.SIGN_IN_REQUEST_CODE);
-        } else {
-            Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
-                    .append(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()),Toast.LENGTH_SHORT).show();
-            loadUserInformation();
+//        if (FirebaseAuth.getInstance().getCurrentUser() == null){
+//            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
+//                    .setAvailableProviders(providers).build(), Common.SIGN_IN_REQUEST_CODE);
+//        } else {
+//            Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
+//                    .append(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()),Toast.LENGTH_SHORT).show();
+//            loadUserInformation();
+//        }
+
+        //Check if already sign in
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            startActivity(new Intent(SingIn.this,Main.class));
         }
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signout();
-            }
-        });
-
-        btnMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SingIn.this,Main.class));
-            }
-        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,24 +69,6 @@ public class SingIn extends AppCompatActivity {
                         .setAvailableProviders(providers).build(), Common.SIGN_IN_REQUEST_CODE);
             }
         });
-
-    }
-
-    private void signout(){
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // ...
-                    }
-                });
-    }
-
-    private void loadUserInformation() {
-        tName = (TextView) findViewById(R.id.name);
-        tEmail =(TextView) findViewById(R.id.email);
-        tEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        tName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
     }
 }

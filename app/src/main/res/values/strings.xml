@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CatatKuy</string>
+    <string name="nav_catatan">Catatan</string>
+    <string name="nav_pengingat">Pengingat</string>
+    <string name="nav_pengaturan">Pengaturan</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

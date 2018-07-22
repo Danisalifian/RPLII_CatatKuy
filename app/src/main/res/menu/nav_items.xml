@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_catatan"
+        android:icon="@drawable/icons8_tasklist_32"
+        android:title="@string/nav_catatan" />
+    <item
+        android:id="@+id/nav_pengingat"
+        android:icon="@drawable/icons_notification_32"
+        android:title="@string/nav_pengingat" />
+    <item
+        android:id="@+id/nav_pengaturan"
+        android:icon="@drawable/icons_settings_32"
+        android:title="@string/nav_pengaturan" />
+</menu>
