@@ -11,4 +11,22 @@
         android:layout_height="match_parent"
         android:text="Catatan Fragment" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnTambah"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_createnote"
+            android:src="@drawable/icons_create_32"/>
+    </RelativeLayout>
+
+
+
 </FrameLayout>

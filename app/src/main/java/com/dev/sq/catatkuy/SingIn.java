@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SingIn extends AppCompatActivity {
-    private TextView tName,tEmail;
+
     private SignInButton btnLogin;
 
     @Override
@@ -46,16 +46,6 @@ public class SingIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         btnLogin = (SignInButton) findViewById(R.id.btnLogin);
-
-        //Check if not sign in then navigatae to sign in page
-//        if (FirebaseAuth.getInstance().getCurrentUser() == null){
-//            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
-//                    .setAvailableProviders(providers).build(), Common.SIGN_IN_REQUEST_CODE);
-//        } else {
-//            Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
-//                    .append(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()),Toast.LENGTH_SHORT).show();
-//            loadUserInformation();
-//        }
 
         //Check if already sign in
         if (FirebaseAuth.getInstance().getCurrentUser() != null){

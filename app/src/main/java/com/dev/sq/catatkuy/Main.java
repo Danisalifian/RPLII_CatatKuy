@@ -9,15 +9,21 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Main extends AppCompatActivity {
-//    private TextView tName,tEmail,tUid;
-//    private Button btnLogout;
+
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFrame;
 
     private CatatanFragment catatanFragment;
     private PengingatFragment pengingatFragment;
     private PengaturanFragment pengaturanFragment;
+
+    private DatabaseReference mDatabaseReference;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,13 @@ public class Main extends AppCompatActivity {
         catatanFragment = new CatatanFragment();
         pengaturanFragment = new PengaturanFragment();
         pengingatFragment = new PengingatFragment();
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        mAuth = FirebaseAuth.getInstance();
+
+        //save data user into firebase database
+        mDatabaseReference.child(mAuth.getCurrentUser().getUid()).child("User_Information")
+                .child("Email").setValue(mAuth.getCurrentUser().getEmail());
 
         setFragment(catatanFragment);
 
@@ -52,18 +65,6 @@ public class Main extends AppCompatActivity {
                 }
             }
         });
-
-//        btnLogout = (Button) findViewById(R.id.btnLogout);
-//
-//        btnLogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signout();
-//                startActivity(new Intent(Main.this,SingIn.class));
-//            }
-//        });
-//
-//        loadUserInformation();
     }
 
     private void setFragment(Fragment fragment) {
@@ -71,25 +72,4 @@ public class Main extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_frame, fragment);
         fragmentTransaction.commit();
     }
-
-//    private void signout(){
-//        AuthUI.getInstance()
-//                .signOut(this)
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        // back to login page
-//                        startActivity(new Intent(Main.this,SingIn.class));
-//                    }
-//                });
-//    }
-
-//    private void loadUserInformation() {
-//        tName = (TextView) findViewById(R.id.name);
-//        tEmail =(TextView) findViewById(R.id.email);
-//        tUid = (TextView) findViewById(R.id.uid);
-//        tEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-//        tName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-//        tUid.setText(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//
-//    }
 }
