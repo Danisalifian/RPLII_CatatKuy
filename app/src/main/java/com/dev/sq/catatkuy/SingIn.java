@@ -29,7 +29,7 @@ public class SingIn extends AppCompatActivity {
         if (requestCode == Common.SIGN_IN_REQUEST_CODE){
             if (resultCode == RESULT_OK){
                 Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
-                        .append(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString()),Toast.LENGTH_SHORT).show();
+                        .append(FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString()),Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(SingIn.this,Main.class));
             }
         }

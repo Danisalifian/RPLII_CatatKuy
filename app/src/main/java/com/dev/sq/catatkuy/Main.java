@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.dev.sq.catatkuy.Model.Users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,12 +38,16 @@ public class Main extends AppCompatActivity {
         pengaturanFragment = new PengaturanFragment();
         pengingatFragment = new PengingatFragment();
 
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+//        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+//        mAuth = FirebaseAuth.getInstance();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
         mAuth = FirebaseAuth.getInstance();
 
         //save data user into firebase database
-        mDatabaseReference.child(mAuth.getCurrentUser().getUid()).child("User_Information")
-                .child("Email").setValue(mAuth.getCurrentUser().getEmail());
+//        mDatabaseReference.child(mAuth.getCurrentUser().getUid()).child("User_Information")
+//                .child("Email").setValue(mAuth.getCurrentUser().getEmail());
+        Users users = new Users(mAuth.getCurrentUser().getEmail().toString(),mAuth.getCurrentUser().getDisplayName().toString());
+        mDatabaseReference.child(mAuth.getCurrentUser().getUid().toString()).child("basic").setValue(users);
 
         setFragment(catatanFragment);
 
