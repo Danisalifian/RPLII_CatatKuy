@@ -4,6 +4,8 @@ public class Users {
     private String Email;
     private String Nama;
 
+    public Users(){};
+
     public Users(String email, String nama) {
         Email = email;
         Nama = nama;

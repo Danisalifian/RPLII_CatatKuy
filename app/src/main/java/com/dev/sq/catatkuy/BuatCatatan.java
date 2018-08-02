@@ -78,32 +78,33 @@ public class BuatCatatan extends AppCompatActivity {
     private void simpan_catatan(String judul, String konten){
         if (mAuth.getCurrentUser() != null){
 
-            final DatabaseReference newCatatanRef = sCatatanDB.push();
+                final DatabaseReference newCatatanRef = sCatatanDB.push();
 
-            final Map catatanMap = new HashMap();
-            catatanMap.put("judul",judul);
-            catatanMap.put("konten",konten);
-            catatanMap.put("waktu", ServerValue.TIMESTAMP);
+                final Map catatanMap = new HashMap();
+                catatanMap.put("judul", judul);
+                catatanMap.put("konten", konten);
+                catatanMap.put("waktu", ServerValue.TIMESTAMP);
 
-            Thread mainThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    newCatatanRef.setValue(catatanMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(BuatCatatan.this,"Catatan telah disimpan"
-                                        , Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(BuatCatatan.this,Main.class));
-                            } else {
-                                Toast.makeText(BuatCatatan.this,"Error" + task.getException().getMessage()
-                                        , Toast.LENGTH_SHORT).show();
+                Thread mainThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        newCatatanRef.setValue(catatanMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(BuatCatatan.this, "Catatan telah disimpan"
+                                            , Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(BuatCatatan.this, Main.class));
+                                } else {
+                                    Toast.makeText(BuatCatatan.this, "Error" + task.getException().getMessage()
+                                            , Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
-                }
-            });
-            mainThread.start();
+                        });
+                    }
+                });
+                mainThread.start();
+
         } else {
             Toast.makeText(this,"User is not signed",Toast.LENGTH_SHORT).show();
         }

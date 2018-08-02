@@ -31,6 +31,7 @@ public class SingIn extends AppCompatActivity {
                 Toast.makeText(SingIn.this,new StringBuilder("Welcome ")
                         .append(FirebaseAuth.getInstance().getCurrentUser().getDisplayName().toString()),Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(SingIn.this,Main.class));
+                finish();
             }
         }
     }
@@ -50,6 +51,7 @@ public class SingIn extends AppCompatActivity {
         //Check if already sign in
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
             startActivity(new Intent(SingIn.this,Main.class));
+            finish();
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
