@@ -24,8 +24,10 @@
             android:name=".SingIn"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Main" />
-        <activity android:name=".BuatCatatan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".BuatCatatan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UbahCatatan"></activity>
     </application>
 
 </manifest>

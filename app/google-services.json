@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "445465887546-6ji5ao448v08e9hpjs2ke9oqg0ofjcaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.sq.catatkuy",
+            "certificate_hash": "18c21a9166cde02fd0aa26aa45b2b106bf710a93"
+          }
+        },
+        {
           "client_id": "445465887546-fskpj4ed9r395ot8v8tmimk7q44e6m6b.apps.googleusercontent.com",
           "client_type": 3
         }
