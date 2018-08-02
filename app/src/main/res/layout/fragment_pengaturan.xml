@@ -3,48 +3,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PengaturanFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Pengaturan Fragment" />
+    tools:context=".PengaturanFragment"
+    android:background="#EEEEEE">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/white"
+        android:id="@+id/info_pengguna">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama"
+            android:text="Informasi Pengguna"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/info"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha=".3"
+            android:background="@android:color/black"
+            android:layout_below="@+id/info"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="25dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Display Name"
             android:id="@+id/nama"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="30dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:id="@+id/email"
+            android:textSize="20dp"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp" />
+            android:textColor="@android:color/black"
+            android:layout_marginStart="60dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Id"
-            android:id="@+id/uid"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="30dp"/>
+            android:id="@+id/email"
+            android:text="Display Email"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/nama"
+            android:layout_marginStart="60dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="150dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pengaturan"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/setting"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha=".3"
+            android:background="@android:color/black"
+            android:layout_below="@+id/setting"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="25dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="440dp">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:text="Keluar"
+            android:textAllCaps="false"
             android:id="@+id/btnLogout"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"
+            android:background="@drawable/btn_simpan"
+            android:layout_margin="15dp"/>
     </RelativeLayout>
 
 </FrameLayout>

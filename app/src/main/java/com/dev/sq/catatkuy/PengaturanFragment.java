@@ -21,7 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
  * A simple {@link Fragment} subclass.
  */
 public class PengaturanFragment extends Fragment {
-    private TextView tEmail,tNama,tUid;
+    private TextView tEmail,tNama;
+//            ,tUid;
     private Button btnLogout;
 
     public PengaturanFragment() {
@@ -37,13 +38,13 @@ public class PengaturanFragment extends Fragment {
 
         tEmail = (TextView) v.findViewById(R.id.email);
         tNama = (TextView) v.findViewById(R.id.nama);
-        tUid = (TextView) v.findViewById(R.id.uid);
+//        tUid = (TextView) v.findViewById(R.id.uid);
 
         btnLogout = (Button) v.findViewById(R.id.btnLogout);
 
         tEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         tNama.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        tUid.setText(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        tUid.setText(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
